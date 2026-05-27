@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>54FADEZ — Premium Barbershop | Malaga, WA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-dim: #7A5E28;
+    --black: #080808;
+    --black-mid: #111111;
+    --black-soft: #1A1A1A;
+    --white: #F5F0E8;
+    --white-dim: #9E9890;
+    --border: rgba(201,168,76,0.18);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--gold); color: var(--black); }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 72px;
+    transition: background 0.4s, border-bottom 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(8,8,8,0.95);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-decoration: none;
+    position: relative;
+  }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--white-dim);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--black);
+    padding: 0.55rem 1.4rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 24px; height: 1.5px; background: var(--white); display: block; transition: 0.3s; }
+
+  /* ─── HERO ─── */
+  #hero {
+    height: 100vh; min-height: 700px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    text-align: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,168,76,0.07) 0%, transparent 70%),
+      linear-gradient(180deg, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.85) 100%),
+      url('https://images.unsplash.com/photo-1621605815971-e90a7ae77ae4?w=1800&q=80') center/cover no-repeat;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.4;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 2rem;
+    animation: heroIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--border);
+    color: var(--gold);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 0.45rem 1.2rem;
+    margin-bottom: 2rem;
+    animation: heroIn 1s 0.2s both;
+  }
+  .hero-h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 0.92;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    animation: heroIn 1s 0.35s both;
+  }
+  .hero-h1 em { color: var(--gold); font-style: normal; }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    color: var(--white-dim);
+    max-width: 540px;
+    margin: 0 auto 2.5rem;
+    animation: heroIn 1s 0.5s both;
+  }
+  .hero-btns {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    animation: heroIn 1s 0.65s both;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+    padding: 1rem 2.2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+  .btn-primary:hover::after { left: 100%; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,0.25); }
+  .btn-outline {
+    border: 1px solid rgba(245,240,232,0.3);
+    color: var(--white);
+    padding: 1rem 2.2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: var(--white-dim); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    animation: heroIn 1s 1s both;
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+  @keyframes scrollPulse {
+    0%,100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.6); opacity: 0.4; }
+  }
+
+  /* ─── INFO BAR ─── */
+  .info-bar {
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    gap: 3rem; padding: 0.9rem 5vw;
+    flex-wrap: wrap;
+  }
+  .info-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--black); font-weight: 500;
+  }
+  .info-item svg { flex-shrink: 0; }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 8rem 5vw; }
+  .section-tag {
+    font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .section-tag::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    line-height: 0.95; letter-spacing: 0.04em;
+    color: var(--white);
+  }
+  .section-title em { color: var(--gold); font-style: normal; }
+  .divider { width: 60px; height: 1px; background: var(--gold); margin: 2rem 0; }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--black-mid); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: center; max-width: 1200px; margin: 0 auto;
+  }
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-img {
+    width: 100%; aspect-ratio: 3/4;
+    object-fit: cover;
+    filter: grayscale(20%);
+  }
+  .about-img-deco {
+    position: absolute;
+    top: -20px; right: -20px;
+    width: calc(100% - 40px); height: calc(100% - 40px);
+    border: 1px solid var(--border);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .about-gold-tag {
+    position: absolute; bottom: -1px; left: -1px;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    padding: 0.8rem 1.5rem;
+  }
+  .about-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--white-dim);
+    margin-bottom: 1.5rem;
+  }
+  .about-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 3rem;
+    border-top: 1px solid var(--border); padding-top: 2rem;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-top: 0.3rem;
+  }
+
+  /* ─── SERVICES ─── */
+  #services { background: var(--black); }
+  .services-header { max-width: 1200px; margin: 0 auto 5rem; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5px;
+    max-width: 1200px; margin: 0 auto;
+    background: var(--border);
+  }
+  .service-card {
+    background: var(--black);
+    padding: 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0); transform-origin: center;
+    transition: transform 0.4s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { background: var(--black-soft); }
+  .service-icon {
+    font-size: 1.8rem; margin-bottom: 1.5rem;
+    display: block;
+  }
+  .service-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+  }
+  .service-desc {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: var(--white-dim);
+  }
+  .service-price {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--gold);
+  }
+
+  /* ─── GALLERY ─── */
+  #gallery { background: var(--black-mid); }
+  .gallery-header { max-width: 1200px; margin: 0 auto 3rem; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 320px 320px;
+    gap: 4px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .gallery-item {
+    overflow: hidden; position: relative;
+    background: var(--black-soft);
+  }
+  .gallery-item:first-child { grid-row: 1 / 3; }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.4s;
+    filter: grayscale(25%);
+  }
+  .gallery-item:hover img { transform: scale(1.06); filter: grayscale(0%); }
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(8,8,8,0.7));
+    opacity: 0; transition: opacity 0.3s;
+    display: flex; align-items: flex-end; padding: 1.5rem;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+  }
+
+  /* ─── REVIEWS ─── */
+  #reviews { background: var(--black); }
+  .reviews-header { max-width: 1200px; margin: 0 auto 2rem; }
+  .stars-row {
+    display: flex; align-items: center; gap: 0.5rem;
+    margin: 1.5rem 0 3rem;
+  }
+  .star { color: var(--gold); font-size: 1.2rem; }
+  .rating-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    color: var(--white-dim);
+    margin-left: 0.5rem;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .review-card {
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .review-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .review-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--white-dim);
+    margin-bottom: 2rem;
+  }
+  .review-stars { display: flex; gap: 3px; margin-bottom: 1.5rem; }
+  .review-stars span { color: var(--gold); font-size: 0.85rem; }
+  .review-author {
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .author-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--gold-dim);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+  .author-name {
+    font-weight: 500; font-size: 0.88rem; color: var(--white);
+  }
+  .author-date {
+    font-size: 0.7rem;
+    color: var(--white-dim);
+    margin-top: 2px;
+  }
+  .google-badge {
+    position: absolute; top: 2.5rem; right: 2rem;
+    font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold-dim);
+  }
+
+  /* ─── BOOKING ─── */
+  #booking {
+    background: var(--black-mid);
+    position: relative; overflow: hidden;
+  }
+  #booking::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .booking-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: start; max-width: 1100px; margin: 0 auto;
+  }
+  .booking-info p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--white-dim);
+    margin-bottom: 2.5rem;
+  }
+  .contact-list { list-style: none; }
+  .contact-list li {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+    color: var(--white-dim);
+    line-height: 1.5;
+  }
+  .contact-list li:last-child { border-bottom: none; }
+  .contact-icon { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+  .contact-label {
+    font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); display: block; margin-bottom: 2px;
+  }
+  .booking-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-label {
+    font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .form-input, .form-select, .form-textarea {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 0.9rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.25s;
+    width: 100%;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--gold);
+  }
+  .form-select { appearance: none; cursor: pointer; }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  option { background: var(--black-mid); }
+  .form-submit {
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 1.1rem 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s;
+    align-self: flex-start;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.2); }
+
+  /* ─── MAP ─── */
+  #location { background: var(--black); padding: 0; }
+  .map-container { position: relative; }
+  .map-overlay-bar {
+    background: var(--black-mid);
+    padding: 3rem 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .map-address {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.06em;
+    color: var(--white);
+  }
+  .map-address span { color: var(--gold); }
+  .map-iframe-wrap {
+    height: 420px; overflow: hidden; position: relative;
+    filter: grayscale(40%) contrast(1.05);
+  }
+  .map-iframe-wrap iframe {
+    width: 100%; height: 100%; border: none;
+    display: block;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--black-mid);
+    border-top: 1px solid var(--border);
+    padding: 5rem 5vw 2rem;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; max-width: 1200px; margin: 0 auto 4rem;
+  }
+  .footer-brand .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .footer-brand p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--white-dim);
+    line-height: 1.7;
+    max-width: 260px;
+  }
+  .footer-social {
+    display: flex; gap: 1rem; margin-top: 2rem;
+  }
+  .social-link {
+    width: 40px; height: 40px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white-dim);
+    text-decoration: none;
+    transition: all 0.25s;
+    font-size: 0.8rem;
+  }
+  .social-link:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-3px);
+  }
+  .footer-col h4 {
+    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.8rem; }
+  .footer-col a {
+    color: var(--white-dim); text-decoration: none;
+    font-size: 0.85rem; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--white); }
+  .footer-col p {
+    color: var(--white-dim); font-size: 0.85rem; line-height: 1.8;
+  }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-tagline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+  }
+  .footer-copy {
+    font-size: 0.72rem;
+    color: var(--white-dim);
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── REVEAL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 900px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    nav { padding: 0 1.5rem; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .booking-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 220px 220px 220px;
+    }
+    .gallery-item:first-child { grid-row: 1 / 2; grid-column: 1 / 3; }
+
+    .info-bar { gap: 1rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .map-overlay-bar { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 5rem 1.5rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(5, 200px);
+    }
+    .gallery-item:first-child { grid-row: 1 / 2; grid-column: 1 / 2; }
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 99;
+    background: var(--black);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .mobile-menu.open { transform: translateX(0); }
+  .mobile-menu a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-close {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    background: none; border: none;
+    color: var(--white); font-size: 2rem; cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">54<span>FADEZ</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#booking">Book</a></li>
+    <li><a href="#location">Find Us</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Book Now</a>
+  <div class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#gallery" class="mobile-link">Gallery</a>
+  <a href="#reviews" class="mobile-link">Reviews</a>
+  <a href="#booking" class="mobile-link">Book</a>
+  <a href="#location" class="mobile-link">Find Us</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Est. Malaga, Western Australia</div>
+    <h1 class="hero-h1">Precision Cuts.<br><em>Fresh Fades.</em><br>Premium Grooming.</h1>
+    <p class="hero-sub">Experience elite barbering at 54FADEZ in Malaga, Western Australia.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-primary">Book Appointment</a>
+      <a href="tel:0466468927" class="btn-outline">📞 Call Now</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <div class="info-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    40 Oxleigh Dr, Malaga WA 6090
+  </div>
+  <div class="info-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.13 1 .37 1.97.71 2.9a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45c.93.34 1.9.58 2.9.71A2 2 0 0 1 22 16.92z"/></svg>
+    0466 468 927
+  </div>
+  <div class="info-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Tue – Sat &nbsp;|&nbsp; 12PM – 6PM
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal">
+      <img class="about-img" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80" alt="Barber at work" loading="lazy">
+      <div class="about-img-deco"></div>
+      <div class="about-gold-tag">Since Day One</div>
+    </div>
+    <div class="about-text">
+      <div class="section-tag reveal">Our Story</div>
+      <h2 class="section-title reveal reveal-delay-1">Where <em>Craft</em><br>Meets Culture</h2>
+      <div class="divider reveal reveal-delay-2"></div>
+      <p class="reveal reveal-delay-2">At 54FADEZ, we believe a great haircut is more than a trim — it's an experience. Rooted in Malaga's community, we bring elite precision and a passion for grooming culture to every client who sits in our chair.</p>
+      <p class="reveal reveal-delay-3">From flawless skin fades to sculpted beards, every detail matters here. Our barbers are artists, our shop is a sanctuary, and our standard is nothing less than exceptional.</p>
+      <div class="about-stats reveal reveal-delay-3">
+        <div>
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+        <div>
+          <div class="stat-num">5★</div>
+          <div class="stat-label">Google Rated</div>
+        </div>
+        <div>
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Premium Service</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div class="section-tag reveal">What We Offer</div>
+    <h2 class="section-title reveal reveal-delay-1">Our <em>Services</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">✂️</span>
+      <div class="service-name">Fade Cuts</div>
+      <p class="service-desc">From low to high, skin to scissor — precision fades tailored to your style. Clean lines, seamless blends.</p>
+      <span class="service-price">Signature Service</span>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <span class="service-icon">🪒</span>
+      <div class="service-name">Beard Trims</div>
+      <p class="service-desc">Shape, sculpt, and define your beard to perfection. Hot towel finishes available on request.</p>
+      <span class="service-price">Sharp Finish</span>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <span class="service-icon">📐</span>
+      <div class="service-name">Line-Ups</div>
+      <p class="service-desc">Crisp, razor-sharp edges. Perfect for maintaining a clean look between cuts or refreshing your style.</p>
+      <span class="service-price">Edge Up</span>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <span class="service-icon">👦</span>
+      <div class="service-name">Kids Cuts</div>
+      <p class="service-desc">Gentle, patient service for the young ones. Fresh cuts in a comfortable, welcoming environment.</p>
+      <span class="service-price">Family Friendly</span>
+    </div>
+    <div class="service-card reveal reveal-delay-4">
+      <span class="service-icon">💈</span>
+      <div class="service-name">Styling</div>
+      <p class="service-desc">Full styling service using premium products. Walk out looking — and feeling — your absolute best.</p>
+      <span class="service-price">Premium Finish</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-header">
+    <div class="section-tag reveal">The Work</div>
+    <h2 class="section-title reveal reveal-delay-1">Fresh <em>Every Time</em></h2>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&q=80" alt="Fade cut" loading="lazy">
+      <div class="gallery-overlay"><span class="gallery-label">Skin Fade</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80" alt="Barber styling" loading="lazy">
+      <div class="gallery-overlay"><span class="gallery-label">Full Style</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" alt="Beard trim" loading="lazy">
+      <div class="gallery-overlay"><span class="gallery-label">Beard Sculpt</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?w=600&q=80" alt="Line up" loading="lazy">
+      <div class="gallery-overlay"><span class="gallery-label">Line-Up</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1559599189-fe84dea4eb79?w=600&q=80" alt="Premium cut" loading="lazy">
+      <div class="gallery-overlay"><span class="gallery-label">Taper Fade</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="reviews-header">
+    <div class="section-tag reveal">Testimonials</div>
+    <h2 class="section-title reveal reveal-delay-1">What the <em>People</em> Say</h2>
+    <div class="stars-row reveal reveal-delay-2">
+      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      <span class="rating-text">5.0 on Google Reviews</span>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <span class="google-badge">Google Review</span>
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-quote">"Best fade I've ever had. The attention to detail is unreal — walked out feeling like a different person. This is the only place I'll go now."</p>
+      <div class="review-author">
+        <div class="author-avatar">JM</div>
+        <div>
+          <div class="author-name">James M.</div>
+          <div class="author-date">2 weeks ago</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-1">
+      <span class="google-badge">Google Review</span>
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-quote">"Took my son here for his first proper haircut. The barber was so patient and the result was incredible. We'll definitely be back every month."</p>
+      <div class="review-author">
+        <div class="author-avatar">SK</div>
+        <div>
+          <div class="author-name">Sandra K.</div>
+          <div class="author-date">1 month ago</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-2">
+      <span class="google-badge">Google Review</span>
+      <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <p class="review-quote">"Premium experience from start to finish. The shop is clean, the vibe is great, and my skin fade was absolutely sharp. Highly recommend 54FADEZ."</p>
+      <div class="review-author">
+        <div class="author-avatar">TR</div>
+        <div>
+          <div class="author-name">Tyler R.</div>
+          <div class="author-date">3 weeks ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="booking-grid">
+    <div class="booking-info">
+      <div class="section-tag reveal">Reserve Your Chair</div>
+      <h2 class="section-title reveal reveal-delay-1">Book Your <em>Session</em></h2>
+      <div class="divider reveal reveal-delay-2"></div>
+      <p class="reveal reveal-delay-2">Ready to elevate your look? Fill in the form and we'll confirm your appointment. Walk-ins also welcome during opening hours.</p>
+      <ul class="contact-list reveal reveal-delay-3">
+        <li>
+          <span class="contact-icon">📍</span>
+          <div>
+            <span class="contact-label">Address</span>
+            40 Oxleigh Dr, Malaga WA 6090
+          </div>
+        </li>
+        <li>
+          <span class="contact-icon">📞</span>
+          <div>
+            <span class="contact-label">Phone</span>
+            <a href="tel:0466468927" style="color:var(--white-dim);text-decoration:none;">0466 468 927</a>
+          </div>
+        </li>
+        <li>
+          <span class="contact-icon">🕐</span>
+          <div>
+            <span class="contact-label">Hours</span>
+            Tuesday – Saturday<br>12:00 PM – 6:00 PM
+          </div>
+        </li>
+        <li>
+          <span class="contact-icon">📵</span>
+          <div>
+            <span class="contact-label">Closed</span>
+            Sunday & Monday
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <form class="booking-form" id="bookingForm" action="https://formspree.io/f/xredywqk" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" class="form-input" placeholder="John" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" class="form-input" placeholder="04XX XXX XXX" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="service">Service</label>
+          <select id="service" name="service" class="form-select" required>
+            <option value="">Select a service...</option>
+            <option>Fade Cut</option>
+            <option>Beard Trim</option>
+            <option>Line-Up</option>
+            <option>Kids Cut</option>
+            <option>Styling</option>
+            <option>Fade + Beard</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="date">Preferred Date</label>
+            <input type="date" id="date" name="date" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="time">Preferred Time</label>
+            <select id="time" name="time" class="form-select" required>
+              <option>12:00 PM</option>
+              <option>1:00 PM</option>
+              <option>2:00 PM</option>
+              <option>3:00 PM</option>
+              <option>4:00 PM</option>
+              <option>5:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="notes">Notes (optional)</label>
+          <textarea id="notes" name="notes" class="form-textarea" placeholder="Any specific requests or style references..."></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="New 54FADEZ booking request">
+        <button type="submit" class="form-submit">Request Appointment</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<div id="location">
+  <div class="map-overlay-bar">
+    <div>
+      <div class="section-tag">Find Us</div>
+      <div class="map-address">40 Oxleigh Dr, <span>Malaga WA 6090</span></div>
+    </div>
+    <a href="https://maps.google.com/?q=40+Oxleigh+Dr+Malaga+WA+6090" target="_blank" class="btn-primary" style="text-decoration:none;padding:0.8rem 1.8rem;">Get Directions</a>
+  </div>
+  <div class="map-iframe-wrap">
+    <iframe
+      src="https://www.google.com/maps?q=40+Oxleigh+Dr,+Malaga+WA+6090&output=embed"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="54FADEZ Location">
+    </iframe>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-text">54FADEZ</div>
+      <p>Premium barbering in the heart of Malaga, Western Australia. Where every cut tells a story.</p>
+      <div class="footer-social">
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="TikTok">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.21a8.16 8.16 0 0 0 4.77 1.52V7.27a4.85 4.85 0 0 1-1-.58z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Fade Cuts</a></li>
+        <li><a href="#services">Beard Trims</a></li>
+        <li><a href="#services">Line-Ups</a></li>
+        <li><a href="#services">Kids Cuts</a></li>
+        <li><a href="#services">Styling</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Visit Us</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#booking">Book Now</a></li>
+        <li><a href="#location">Directions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <p>Tuesday<br>12PM – 6PM</p>
+      <p style="margin-top:0.8rem">Wednesday<br>12PM – 6PM</p>
+      <p style="margin-top:0.8rem">Thu – Sat<br>12PM – 6PM</p>
+      <p style="margin-top:0.8rem;color:var(--gold-dim);">Sun – Mon: Closed</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-tagline">Stay Sharp. Stay Fresh. 54FADEZ.</div>
+    <div class="footer-copy">© 2025 54FADEZ. All rights reserved. Malaga, WA 6090</div>
+  </div>
+</footer>
+
+<script>
+  // NAV SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // MOBILE MENU
+  const hamburger = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // REVEAL ON SCROLL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // BOOKING FORM — AJAX submit to Formspree
+  const bookingForm = document.getElementById('bookingForm');
+  bookingForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = bookingForm.querySelector('.form-submit');
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    try {
+      const res = await fetch(bookingForm.action, {
+        method: 'POST',
+        body: new FormData(bookingForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        btn.textContent = "✓ Request Sent — We'll Be In Touch!";
+        btn.style.background = '#2a6e3f';
+        btn.style.color = '#fff';
+        bookingForm.reset();
+      } else {
+        throw new Error('Submit failed');
+      }
+    } catch (err) {
+      btn.textContent = '✕ Something went wrong — call us instead';
+      btn.style.background = '#8a2a2a';
+      btn.style.color = '#fff';
+    }
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.disabled = false;
+    }, 5000);
+  });
+
+  // SMOOTH SCROLL for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
