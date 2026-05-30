@@ -341,16 +341,17 @@
   .gallery-header { max-width: 1200px; margin: 0 auto 3rem; }
   .gallery-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 320px 320px;
+    grid-template-columns: repeat(3, 1fr);
     gap: 4px;
     max-width: 1200px; margin: 0 auto;
   }
   .gallery-item {
     overflow: hidden; position: relative;
     background: var(--black-soft);
+    height: 380px;
   }
-  .gallery-item:first-child { grid-row: 1 / 3; }
+  /* wide landscape feature tile (the lounge shot) */
+  .gallery-feature { grid-column: 1 / -1; height: 460px; }
   .gallery-item img {
     width: 100%; height: 100%;
     object-fit: cover;
